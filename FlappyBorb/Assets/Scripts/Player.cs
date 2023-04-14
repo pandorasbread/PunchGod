@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D body;
-    private const float playerSpeed = .5f;
+    private const float playerSpeed = 3f;
     public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -36,10 +36,11 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKey("a"))
-            body.position += Vector2.left * Time.fixedDeltaTime * playerSpeed;
+            
+            body.velocity = new Vector2(-1* playerSpeed, body.velocity.y);
 
         if (Input.GetKey("d"))
-            body.position += Vector2.right * Time.fixedDeltaTime * playerSpeed;
+            body.velocity = new Vector2(1* playerSpeed, body.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
