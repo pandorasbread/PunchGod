@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDestroyable   
 {
     private Animator animator;
     private Rigidbody2D body;
     private const float playerSpeed = 3f;
     public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
