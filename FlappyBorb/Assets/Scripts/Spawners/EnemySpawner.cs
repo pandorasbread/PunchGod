@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : Spawner
 {
     public GameObject enemyType;
+    public float spawnX;
+    public float spawnY;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +15,10 @@ public class EnemySpawner : Spawner
 
     public override void Spawn()
     {
-        GameObject newhurdle = Instantiate(enemyType);
-        newhurdle.transform.position = transform.position + new Vector3(Random.Range(-hCenter, hCenter), 0, 0);        
+        spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-50)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-20)).y);
+        spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(Screen.width*.35f, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width*.65f,0)).x);
+        GameObject enemy = Instantiate(enemyType, new Vector3(spawnX,spawnY,0), Quaternion.identity);
+        
     }
     
     public override bool CanSpawn(){

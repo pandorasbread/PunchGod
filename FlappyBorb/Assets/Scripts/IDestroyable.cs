@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IDestroyable
 {
-    float Health;
-    void TakeDamage();
+    int Health {get; set;}
+    void TakeDamage(int damage);
+
+    void GetDestroyed();
 }

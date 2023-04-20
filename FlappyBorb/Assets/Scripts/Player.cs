@@ -7,7 +7,9 @@ public class Player : MonoBehaviour, IDestroyable
     private Animator animator;
     private Rigidbody2D body;
     private const float playerSpeed = 3f;
+    public int Health {get;set;} = 10;
     public GameManager gameManager;
+    public int smacc => 5;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +46,21 @@ public class Player : MonoBehaviour, IDestroyable
             body.velocity = new Vector2(1* playerSpeed, body.velocity.y);
     }
 
+    public void TakeDamage(int damage) {
+        Health--;
+    }
+
+    public void GetDestroyed() {
+        gameManager.gameOver();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "death")
-            gameManager.gameOver();
+            GetDestroyed();
+            
+        if (collision.gameObject.TryGetComponent(out IDestroyable hit)) {
+            hit.TakeDamage(smacc);
+        }
     }
 }
