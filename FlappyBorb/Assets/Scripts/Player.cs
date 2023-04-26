@@ -9,6 +9,11 @@ public class Player : MonoBehaviour, IDestroyable
     private const float playerSpeed = 3f;
     public int Health {get;set;} = 10;
     public GameManager gameManager;
+
+
+    [SerializeField]
+    public List<GameObject> Aspects;
+
     public int smacc => 5;
 
     // Start is called before the first frame update
@@ -16,6 +21,8 @@ public class Player : MonoBehaviour, IDestroyable
     {
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        InitializeAspects();
+
     }
 
     // Update is called once per frame
@@ -33,7 +40,6 @@ public class Player : MonoBehaviour, IDestroyable
 
         if (Input.GetKeyDown("space"))
         {
-            print("space key was pressed");
             animator.Play("flap");
             body.velocity += new Vector2(0, 3);
         }
@@ -61,6 +67,13 @@ public class Player : MonoBehaviour, IDestroyable
             
         if (collision.gameObject.TryGetComponent(out IDestroyable hit)) {
             hit.TakeDamage(smacc);
+        }
+    }
+
+    private void InitializeAspects() {
+
+        foreach (var aspect in Aspects) {
+            Instantiate(aspect, new Vector3(0,0,0), Quaternion.identity);
         }
     }
 }

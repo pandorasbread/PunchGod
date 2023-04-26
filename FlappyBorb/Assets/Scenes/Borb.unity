@@ -974,6 +974,8 @@ MonoBehaviour:
   timer: 0
   enemyType: {fileID: 5255845109635091162, guid: 2f02e13cedc1865758589d15889c0c79,
     type: 3}
+  spawnX: 0
+  spawnY: 0
 --- !u!4 &1817485303
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,6 +1130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 703153769356984360
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121660025140283154, guid: 448f177585f9dab45b46f48ad5685dc6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8170311519015756204, guid: 448f177585f9dab45b46f48ad5685dc6,
         type: 3}

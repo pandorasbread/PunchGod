@@ -23,7 +23,6 @@ public class SpareMe : Enemy
             VaryTrajectoryTime();
         }
         timeAlive += Time.deltaTime;
-        print(timeAlive);
         base.Move();
     }
 

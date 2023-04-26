@@ -44,7 +44,6 @@ public class Spawner : MonoBehaviour
 
     public virtual void VarySpawnTime() {
         nextSpawnTimer = Random.Range(maxTime - differenceDown, differenceUp + maxTime);
-        print($"next spawn timer is {nextSpawnTimer}");
     }
 
     public virtual bool CanSpawn() { return true; }
